@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace GeekShopping.ProductAPI.Data.DTO
+﻿namespace GeekShopping.ProductAPI.Data.DTO
 {
     public class ProductDTO
     {
