@@ -33,7 +33,7 @@ namespace GeekShopping.ProductAPI.Repository
         public async Task<ProductDTO> Create(ProductDTO dto)
         {
             Product product = _mapper.Map<Product>(dto);
-            _context.Products.Update(product);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<ProductDTO>(product);
         }
@@ -41,7 +41,7 @@ namespace GeekShopping.ProductAPI.Repository
         public async Task<ProductDTO> Update(ProductDTO dto)
         {
             Product product = _mapper.Map<Product>(dto);
-            _context.Products.Add(product);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<ProductDTO>(product);
         }

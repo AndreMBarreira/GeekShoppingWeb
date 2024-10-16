@@ -1,4 +1,5 @@
 ﻿using GeekShopping.ProductAPI.Data.DTO;
+using GeekShopping.ProductAPI.Models;
 using GeekShopping.ProductAPI.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,30 @@ namespace GeekShopping.ProductAPI.Controllers
             var product = await _repository.FindById(id);
             if (product == null) return NotFound();
             return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ProductDTO>> Create(ProductDTO dto)
+        {
+            if (dto == null) return BadRequest();
+            var productDTO = await _repository.Create(dto);
+            return Ok(productDTO);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ProductDTO>> Update(ProductDTO dto)
+        {
+            if (dto == null) return BadRequest();
+            var productDTO = await _repository.Update(dto);
+            return Ok(productDTO);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProductDTO>> Delete(long id)
+        {
+            var status = await _repository.Delete(id);
+            if (!status) return BadRequest();
+            return Ok(status);
         }
     }
 }
