@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 // HttpClient ProductService
 builder.Services.AddHttpClient<IProductService, ProductServices>(c =>
-    c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductsAPI"])
+    c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"])
 );
 
 var app = builder.Build();
